@@ -1,0 +1,17 @@
+# Autonomous Vehicle Simulation & Town03 Minimap Requirements
+
+# Computer Vision & Numerical Computing
+numpy>=1.22.0
+opencv-python>=4.6.0
+
+# Deep Learning & Perception
+torch>=2.0.0
+torchvision>=0.15.0
+ultralytics>=8.0.0
+
+# Graph & Routing
+networkx>=2.8.0
+
+# Simulator Integration (Provided by CARLA installation on simulation host)
+# carla>=0.9.13  # Install from CARLA's PythonAPI / .whl on the CARLA host
+

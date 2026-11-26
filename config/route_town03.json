@@ -1,0 +1,16 @@
+{
+  "map": "Town03",
+  "start": {
+    "x": -84.79,
+    "y": 27.59,
+    "z": 1.0,
+    "description": "Start location near spawn point 0 on Town03 road network"
+  },
+  "destination": {
+    "x": 216.19,
+    "y": 169.45,
+    "z": 1.0,
+    "description": "Destination location on Town03 road network"
+  }
+}
+

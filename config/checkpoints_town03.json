@@ -1,0 +1,197 @@
+{
+  "map": "Town03",
+  "generated_at": "2026-11-18T00:00:00Z",
+  "source": "carla_town03_map",
+  "checkpoints": [
+    {
+      "id": "P1",
+      "name": "P1 - Central road near the roundabout",
+      "region": "Central road near the roundabout",
+      "world_coordinates": {
+        "x": 142.1,
+        "y": 195.4,
+        "z": 0.5
+      },
+      "road_id": 12,
+      "section_id": 0,
+      "lane_id": -1,
+      "s": 15.0,
+      "gps": {
+        "latitude": 0.001755,
+        "longitude": 0.001276,
+        "altitude": 0.5
+      }
+    },
+    {
+      "id": "P2",
+      "name": "P2 - Roundabout approach/exit",
+      "region": "Roundabout approach/exit",
+      "world_coordinates": {
+        "x": 125.3,
+        "y": 240.9,
+        "z": 0.5
+      },
+      "road_id": 10,
+      "section_id": 0,
+      "lane_id": -1,
+      "s": 22.5,
+      "gps": {
+        "latitude": 0.002164,
+        "longitude": 0.001126,
+        "altitude": 0.5
+      }
+    },
+    {
+      "id": "P3",
+      "name": "P3 - Upper-left road junction",
+      "region": "Upper-left road junction",
+      "world_coordinates": {
+        "x": -188.5,
+        "y": 195.2,
+        "z": 0.5
+      },
+      "road_id": 1,
+      "section_id": 0,
+      "lane_id": -1,
+      "s": 35.0,
+      "gps": {
+        "latitude": 0.001753,
+        "longitude": -0.001693,
+        "altitude": 0.5
+      }
+    },
+    {
+      "id": "P4",
+      "name": "P4 - Upper-middle junction",
+      "region": "Upper-middle junction",
+      "world_coordinates": {
+        "x": -12.4,
+        "y": 208.7,
+        "z": 0.5
+      },
+      "road_id": 2,
+      "section_id": 0,
+      "lane_id": -1,
+      "s": 42.0,
+      "gps": {
+        "latitude": 0.001875,
+        "longitude": -0.000111,
+        "altitude": 0.5
+      }
+    },
+    {
+      "id": "P5",
+      "name": "P5 - Upper-right junction",
+      "region": "Upper-right junction",
+      "world_coordinates": {
+        "x": 218.6,
+        "y": 204.3,
+        "z": 0.5
+      },
+      "road_id": 3,
+      "section_id": 0,
+      "lane_id": -1,
+      "s": 50.0,
+      "gps": {
+        "latitude": 0.001835,
+        "longitude": 0.001964,
+        "altitude": 0.5
+      }
+    },
+    {
+      "id": "P6",
+      "name": "P6 - Right-middle road junction",
+      "region": "Right-middle road junction",
+      "world_coordinates": {
+        "x": 224.2,
+        "y": 12.8,
+        "z": 0.5
+      },
+      "road_id": 4,
+      "section_id": 0,
+      "lane_id": -1,
+      "s": 61.5,
+      "gps": {
+        "latitude": 0.000115,
+        "longitude": 0.002014,
+        "altitude": 0.5
+      }
+    },
+    {
+      "id": "P7",
+      "name": "P7 - Lower-right road section",
+      "region": "Lower-right road section",
+      "world_coordinates": {
+        "x": 202.8,
+        "y": -178.6,
+        "z": 0.5
+      },
+      "road_id": 5,
+      "section_id": 0,
+      "lane_id": -1,
+      "s": 45.0,
+      "gps": {
+        "latitude": -0.001604,
+        "longitude": 0.001822,
+        "altitude": 0.5
+      }
+    },
+    {
+      "id": "P8",
+      "name": "P8 - Bottom-right curved road",
+      "region": "Bottom-right curved road",
+      "world_coordinates": {
+        "x": 108.4,
+        "y": -222.1,
+        "z": 0.5
+      },
+      "road_id": 6,
+      "section_id": 0,
+      "lane_id": -1,
+      "s": 32.0,
+      "gps": {
+        "latitude": -0.001995,
+        "longitude": 0.000974,
+        "altitude": 0.5
+      }
+    },
+    {
+      "id": "P9",
+      "name": "P9 - Bottom-left road section",
+      "region": "Bottom-left road section",
+      "world_coordinates": {
+        "x": -198.2,
+        "y": -192.5,
+        "z": 0.5
+      },
+      "road_id": 7,
+      "section_id": 0,
+      "lane_id": -1,
+      "s": 28.0,
+      "gps": {
+        "latitude": -0.001729,
+        "longitude": -0.001780,
+        "altitude": 0.5
+      }
+    },
+    {
+      "id": "P10",
+      "name": "P10 - Left-middle road junction",
+      "region": "Left-middle road junction",
+      "world_coordinates": {
+        "x": -212.7,
+        "y": 18.3,
+        "z": 0.5
+      },
+      "road_id": 8,
+      "section_id": 0,
+      "lane_id": -1,
+      "s": 72.0,
+      "gps": {
+        "latitude": 0.000164,
+        "longitude": -0.001911,
+        "altitude": 0.5
+      }
+    }
+  ]
+}
