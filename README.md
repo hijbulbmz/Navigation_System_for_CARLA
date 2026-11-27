@@ -8,7 +8,7 @@ Extracted from the **Autonomous Vehicle Training** project.
 ## Folder Structure
 
 ```
-navigation_system_for_CARLA/
+Node2/
 ├── navigation/
 │   ├── router.py           # Road route planner (CARLA GlobalRoutePlanner wrapper)
 │   ├── route_follower.py   # Per-tick steering/throttle/brake controller
@@ -159,7 +159,7 @@ if route_follower.state == NavigationState.ARRIVED:
 ## Run Offline Tests (No CARLA Needed)
 
 ```bash
-cd C:\Users\hijbu\Desktop\navigation_system_for_CARLA
+cd C:\Users\hijbu\Desktop\Node2
 python -m unittest discover -s tests
 ```
 

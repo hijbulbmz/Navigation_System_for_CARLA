@@ -12,6 +12,11 @@ ultralytics>=8.0.0
 # Graph & Routing
 networkx>=2.8.0
 
+# Edge Node 2 Server
+fastapi>=0.110.0
+uvicorn>=0.27.0
+pydantic>=2.0.0
+
 # Simulator Integration (Provided by CARLA installation on simulation host)
 # carla>=0.9.13  # Install from CARLA's PythonAPI / .whl on the CARLA host
 
