@@ -33,6 +33,22 @@ class PlanRouteResponse(BaseModel):
     maneuvers: List[str]
 
 
+class SetDestinationRequest(BaseModel):
+    route_id: Optional[str] = Field(
+        default=None,
+        description="Target session route_id (if omitted, updates the latest active session).",
+    )
+    destination: Optional[List[float]] = Field(
+        default=None,
+        min_length=2,
+        description="Tapped world coordinates [x, y] (automatically snapped to nearest road).",
+    )
+    random_dest: bool = Field(
+        default=False,
+        description="If true, selects a random reachable road point on the current map.",
+    )
+
+
 class StepNavigationRequest(BaseModel):
     route_id: str
     x: float
@@ -55,3 +71,4 @@ class StepNavigationResponse(BaseModel):
     route_progress_pct: float
     needs_replan: bool
     new_waypoints: Optional[List[List[float]]] = None
+    new_destination: Optional[List[float]] = None

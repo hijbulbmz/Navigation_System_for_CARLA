@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import json
 import math
+import random
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
@@ -137,6 +138,50 @@ class OfflineCacheRouter:
         self._cached_graph = graph
         self._cached_bounds = data.get("bounds", {})
         return self._cached_graph, self._cached_bounds
+
+    def get_map_roads_payload(self, map_name: str, max_segments: int = 3500) -> Dict[str, Any]:
+        """Returns map bounds and road segments for browser/mobile canvas rendering."""
+        key = self.normalize_map_key(map_name)
+        cache_file = self.config_dir / f"{key}_roads_cache.json"
+        if not cache_file.is_file():
+            cache_file = self.config_dir / f"{key}_opt_roads_cache.json"
+        if not cache_file.is_file():
+            raise FileNotFoundError(f"Road cache not found for map '{map_name}' in {self.config_dir}")
+
+        with open(cache_file, "r", encoding="utf-8") as f:
+            data = json.load(f)
+
+        roads = data.get("roads", [])
+        if len(roads) > max_segments:
+            step = max(1, len(roads) // max_segments)
+            roads = roads[::step]
+
+        return {
+            "map_name": map_name,
+            "bounds": data.get("bounds", {}),
+            "roads": roads,
+        }
+
+    def pick_random_destination(
+        self,
+        map_name: str,
+        origin: Tuple[float, float],
+        min_distance_m: float = 25.0,
+    ) -> Tuple[float, float]:
+        """Picks a random reachable road node at least `min_distance_m` away from `origin`."""
+        graph, _ = self._load_map_graph(map_name)
+        nodes = list(graph.nodes)
+        if not nodes:
+            raise RuntimeError(f"Road graph for {map_name} is empty")
+        ox, oy = float(origin[0]), float(origin[1])
+        start_node = min(nodes, key=lambda n: (n[0] - ox) ** 2 + (n[1] - oy) ** 2)
+        reachable = list(nx.node_connected_component(graph, start_node))
+        far_nodes = [
+            n for n in reachable
+            if (n[0] - start_node[0]) ** 2 + (n[1] - start_node[1]) ** 2 >= min_distance_m ** 2
+        ]
+        choice = random.choice(far_nodes if far_nodes else reachable)
+        return (float(choice[0]), float(choice[1]))
 
     def _default_destination(
         self,

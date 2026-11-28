@@ -119,6 +119,48 @@ class TestEdgeNavigationServer(unittest.TestCase):
         self.assertEqual(tel.status_code, 200)
         self.assertEqual(tel.json()["nav_state"], "ARRIVED")
 
+    def test_dashboard_and_dynamic_tap_destination(self):
+        dash = self.client.get("/dashboard")
+        self.assertEqual(dash.status_code, 200)
+        self.assertIn("Tap anywhere on the map", dash.text)
+
+        roads_res = self.client.get("/map_roads/Town01")
+        self.assertEqual(roads_res.status_code, 200)
+        self.assertGreater(len(roads_res.json()["roads"]), 100)
+
+        # Start route at (92.0, 76.0)
+        plan_res = self.client.post(
+            "/plan_route",
+            json={"map_name": "Town01", "origin": [92.0, 76.0, 0.0]},
+        )
+        self.assertEqual(plan_res.status_code, 200)
+        route_id = plan_res.json()["route_id"]
+
+        # Simulate tapping an arbitrary off-road point (200.0, 150.0) -> snaps to nearest road
+        set_res = self.client.post(
+            "/set_destination",
+            json={"route_id": route_id, "destination": [200.0, 150.0]},
+        )
+        self.assertEqual(set_res.status_code, 200)
+        new_plan = set_res.json()
+        self.assertEqual(new_plan["status"], "SUCCESS")
+        self.assertGreater(new_plan["waypoint_count"], 10)
+
+        # Next /navigation/step automatically pushes new_waypoints + new_destination to Node 1
+        step_res = self.client.post(
+            "/navigation/step",
+            json={"route_id": route_id, "x": 92.0, "y": 76.0, "yaw_deg": 0.0, "speed_kmh": 15.0},
+        )
+        self.assertEqual(step_res.status_code, 200)
+        s = step_res.json()
+        self.assertTrue(s["needs_replan"])
+        self.assertIsNotNone(s["new_waypoints"])
+        self.assertIsNotNone(s["new_destination"])
+
+        latest = self.client.get("/telemetry/latest")
+        self.assertEqual(latest.status_code, 200)
+        self.assertTrue(latest.json()["active"])
+
 
 if __name__ == "__main__":
     unittest.main()
